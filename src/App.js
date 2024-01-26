@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Cart from "./components/Cart";
+import Products from "./components/Products";
+
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "./rtk/slices/productslice.js";
+import AppNavbar from "./components/Navbar.js";
+import { Route, Routes } from "react-router";
+import { Container } from "react-bootstrap";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const dispatch = useDispatch();
+	return (
+		<div className="App container">
+			<AppNavbar />
+			<Container>
+				<Routes>
+					<Route path="/cart" element={<Cart />} />
+					<Route path="/products" element={<Products />} />
+				</Routes>
+			</Container>
+		</div>
+	);
 }
 
 export default App;
